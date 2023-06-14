@@ -1,0 +1,62 @@
+{%  extends  "layout.html" %}
+
+{% block content %}
+ <div class="container">
+        <div style="margin-bottom: 10px" class="clearfix">
+            <a class="btn btn-primary" href="/admin/add/"> Create Admin </a>
+            <div class="col-lg-3" style="float: right">
+        <div class="input-group">
+            <form action="">
+          <input type="text" class="form-control" placeholder="Search by username" name="search_name">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">Go</button>
+          </span>
+            </form>
+        </div><!-- /input-group -->
+      </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading"> Admin List </div>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>username</th>
+                    <th>password</th>
+                    <th>operation</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for obj in queryset %}
+                <tr>
+                    <td>{{ obj.username }}</td>
+                    <td>{{ obj.password }}</td>
+
+                    <td>
+                        <a class="btn btn-primary" href="/admin/{{ obj.id }}/edit/"> edit </a>
+                        <a class="btn btn-danger" href="/admin/{{ obj.id }}/delete/">delete</a>
+                    </td>
+                </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="pagination">
+        <span class="step-links">
+            {% if queryset.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ queryset.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ queryset.number }} of {{ queryset.paginator.num_pages }}.
+            </span>
+
+            {% if queryset.has_next %}
+                <a href="?page={{ queryset.next_page_number }}">next</a>
+                <a href="?page={{ queryset.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+        </div>
+ </div>
+{% endblock %}
+</html>
