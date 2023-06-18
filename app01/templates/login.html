@@ -36,9 +36,26 @@
                 <label>Password</label>
                 <input type="password" class="form-control" name="password" placeholder="password" >
             </div>
+
+            <div class="form-group">
+                <label for="id_code">Captcha</label>
+                <div class="row">
+                    <div class="col-xs-7">
+                        <input type="text" name="code" class="form-control" placeholder="Please input the Captcha">
+                        <span style="color: red"></span>
+                    </div>
+                    <div class="col-xs-5">
+                        <img id="image_code" src="/captcha/">
+                    </div>
+                </div>
+
+            </div>
             <input type="submit" value="login" class="btn btn-primary">
         </form>
         <label>{{ error }}</label>
+
+
+
     </div>
 
 </body>

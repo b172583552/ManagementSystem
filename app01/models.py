@@ -24,3 +24,15 @@ class UserInfo(models.Model):
     )
     gender = models.SmallIntegerField(verbose_name="gender", choices=gender_choices)
 
+class Order(models.Model):
+    order_id = models.CharField(max_length=64)
+    title = models.CharField(max_length=32)
+    price = models.IntegerField()
+    status_choices = ((1, "unpaid"),
+                      (2, "paid"),)
+
+    status = models.SmallIntegerField(choices=status_choices, default=1)
+
+    admin = models.ForeignKey(to="Admin", on_delete=models.CASCADE)
+
+
