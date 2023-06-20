@@ -33,7 +33,7 @@ def login(request):
             if not admin_object:
                 return render(request, "login.html", {"error": "Wrong Username or Password!"})
             else:
-                request.session["info"] = {"id": admin_object.id, "username": admin_object.username}
+                request.session["info"] = {"admin_id": admin_object.id, "username": admin_object.username}
                 return redirect("/admin/list/")
 
         else:

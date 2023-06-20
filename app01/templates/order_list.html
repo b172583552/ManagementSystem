@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="container">
+        <div>
+            <input id="btnAdd" type="button" value="new order" class="btn btn-primary" data-toggle="modal"
+                   data-target="#myModal">
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">New Order</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        {% for field in form %}
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <label>{{ field.label }}</label>
+                                    {{ field }}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="b1">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+    {% block js %}
+    <script type="text/javascript">
+        function btnEvent() {
+            $("#btnAdd").click(function () {
+                $("#myModal").modal("show");
+            });
+        }
+
+        function btnSaveEvent() {
+            $("#b1").click(function () {
+                alert("Save");
+            });
+        }
+
+        $(function () {
+            btnEvent();
+            btnSaveEvent();
+        });
+    </script>
+{% endblock %}

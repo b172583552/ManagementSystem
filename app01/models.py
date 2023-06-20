@@ -4,6 +4,8 @@ class Admin(models.Model):
     username = models.CharField(max_length=32)
     password = models.CharField(max_length=64)
 
+    def __str__(self):
+        return self.username
 # Create your models here.
 class Department(models.Model):
     title = models.CharField(verbose_name="title", max_length=32)
