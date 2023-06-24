@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
-  <div class="container">
+    <div class="container">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title"> Edit user </h3>
@@ -11,11 +11,13 @@
                     {% csrf_token %}
                     <div class="form-group">
                         <label>Name</label>
-                        <input type="text" class="form-control" placeholder="Name" name="name" value="{{ row_set.name }}">
+                        <input type="text" class="form-control" placeholder="Name" name="name"
+                               value="{{ row_set.name }}">
                     </div>
                     <div class="form-group">
                         <label>password</label>
-                        <input type="text" class="form-control" placeholder="Password" name="password" value="{{ row_set.password }}">
+                        <input type="text" class="form-control" placeholder="Password" name="password"
+                               value="{{ row_set.password }}">
                     </div>
                     <div class="form-group">
                         <label>age</label>
@@ -23,23 +25,25 @@
                     </div>
                     <div class="form-group">
                         <label>balance</label>
-                        <input type="text" class="form-control" placeholder="balance" name="account_balance" value="{{ row_set.account_balance }}">
+                        <input type="text" class="form-control" placeholder="balance" name="account_balance"
+                               value="{{ row_set.account_balance }}">
                     </div>
                     <div class="form-group">
                         <label>employment time</label>
-                        <input type="text" class="form-control" placeholder="employment time" name="create_time" value="{{ row_set.create_time }}">
+                        <input type="text" class="form-control" placeholder="employment time" name="create_time"
+                               value="{{ row_set.create_time }}">
                     </div>
                     <div class="form-group">
                         <label>gender</label>
                         <select class="form-control" name="gender">
                             {% for item in gender_choices %}
-                            <option value={{ item.0 }}>{{ item.1 }}</option>
+                                <option value={{ item.0 }}>{{ item.1 }}</option>
                             {% endfor %}
                         </select>
                     </div>
                     <div class="form-group">
                         <label>department</label>
-                        <select class="form-control" name="department" >
+                        <select class="form-control" name="department">
                             {% for item in department_list %}
                                 <option value="{{ item.id }}"> {{ item.title }}</option>
 
@@ -53,5 +57,5 @@
             </div>
         </div>
 
-  </div>
+    </div>
 {% endblock %}

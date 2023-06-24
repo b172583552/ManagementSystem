@@ -1,7 +1,7 @@
-{% extends "layout.html"%}
+{% extends "layout.html" %}
 
 {% block content %}
-      <div class="container">
+    <div class="container">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title"> Create {{ name }} </h3>
@@ -12,10 +12,11 @@
                     <div class="form-group">
                         <label>{{ name }}</label>
                         {% for attribute in attributes %}
-                        <input type="text" class="form-control" placeholder="{{ attribute }}" name="{{ attribute }}"/>
+                            <input type="text" class="form-control" placeholder="{{ attribute }}"
+                                   name="{{ attribute }}"/>
                         {% endfor %}
                     </div>
-                    <button type="submit" class="btn btn-primary"> Submit </button>
+                    <button type="submit" class="btn btn-primary"> Submit</button>
                 </form>
             </div>
         </div>

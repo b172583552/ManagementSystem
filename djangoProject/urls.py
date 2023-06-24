@@ -26,6 +26,7 @@ urlpatterns = [
     path("department/add/", department.department_add),
     path("department/delete/", department.department_delete),
     path("department/<int:nid>/edit/", department.department_edit),
+    path("department/upload/", department.department_upload),
 
     #for User
     path("user/list/", user.user_list),
@@ -45,5 +46,8 @@ urlpatterns = [
 
     path("order/list/", order.order_list),
     path("order/add/", order.order_add),
+    path("order/<int:nid>/edit/", order.order_edit),
+    path("order/<int:nid>/delete/", order.order_delete),
+
 
 ]

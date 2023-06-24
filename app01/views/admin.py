@@ -39,9 +39,9 @@ def admin_add(request):
             form.save()
             return redirect("/admin/list")
 
-def admin_edit(request,nid):
-    if request.method == "GET":
 
+def admin_edit(request, nid):
+    if request.method == "GET":
 
         attributes = models.Admin.objects.all()[0].__dict__
         dict = {}
@@ -57,6 +57,7 @@ def admin_edit(request,nid):
         if form.is_valid():
             form.save()
             return redirect("/admin/list/")
+
 
 def admin_delete(request, nid):
     models.Admin.objects.filter(id=nid).delete()

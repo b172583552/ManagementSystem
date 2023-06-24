@@ -1,16 +1,65 @@
 {% extends "layout.html" %}
+{% load static %}
 
 {% block content %}
     <div class="container">
         <div>
             <input id="btnAdd" type="button" value="new order" class="btn btn-primary" data-toggle="modal"
-                   data-target="#myModal">
+                   data-target="#add">
+        </div>
+            <div class="panel panel-default">
+            <div class="panel-heading"> Order list</div>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>order_id</th>
+                    <th>title</th>
+                    <th>price</th>
+                    <th>status</th>
+                    <th>admin_id</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for obj in queryset %}
+                    <tr>
+                        <td>{{ obj.order_id }}</td>
+                        <td>{{ obj.title }}</td>
+                        <td>{{ obj.price }}</td>
+                        <td>{{ obj.status }}</td>
+                        <td>{{ obj.admin.username }}</td>
+                        <td>
+                            <input id="btnEdit" type="button" value="edit" class="btn btn-primary" data-toggle="modal"
+                   data-target="#edit">
+                            <a class="btn btn-danger" href="/order/{{ obj.id }}/delete/">delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    <div class="pagination">
+        <span class="step-links">
+            {% if queryset.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ queryset.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ queryset.number }} of {{ queryset.paginator.num_pages }}.
+            </span>
+
+            {% if queryset.has_next %}
+                <a href="?page={{ queryset.next_page_number }}">next</a>
+                <a href="?page={{ queryset.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
         </div>
     </div>
 
 
     <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -18,45 +67,64 @@
                             aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">New Order</h4>
                 </div>
+                <form method="post" action="/order/add/">
+                {% csrf_token %}
                 <div class="modal-body">
-                    <form action="">
+
                         {% for field in form %}
                             <div class="form-group">
-                                <div class="col-xs-12">
-                                    <label>{{ field.label }}</label>
-                                    {{ field }}
-                                </div>
+                                <label>{{ field.label }}</label>
+                                {{ field }}
                             </div>
                         {% endfor %}
-                    </form>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="b1">Save changes</button>
+                    <input type="submit" class="btn btn-primary" id="b1">
                 </div>
+                </form>
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">New Order</h4>
+                </div>
+                <form method="post" action="/order/{{ obj.id }}/edit">
+                {% csrf_token %}
+                <div class="modal-body">
+
+                        {% for field in form %}
+                            <div class="form-group">
+                                <label>{{ field.label }}</label>
+                                {{ field }}
+                            </div>
+                        {% endfor %}
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <input type="submit" class="btn btn-primary" id="b1">
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
 {% endblock %}
 
-
-    {% block js %}
-    <script type="text/javascript">
-        function btnEvent() {
-            $("#btnAdd").click(function () {
-                $("#myModal").modal("show");
-            });
-        }
-
-        function btnSaveEvent() {
-            $("#b1").click(function () {
-                alert("Save");
-            });
-        }
-
-        $(function () {
-            btnEvent();
-            btnSaveEvent();
-        });
+{% block js %}
+    <script src="{% static "plugins/code.jquery.com_jquery-3.7.0.js" %}">
+    $(function (){
+        alert("yes");
+    })
     </script>
+
 {% endblock %}

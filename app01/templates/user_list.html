@@ -1,12 +1,12 @@
-{%  extends  "layout.html" %}
+{% extends  "layout.html" %}
 
 {% block content %}
- <div class="container">
+    <div class="container">
         <div style="margin-bottom: 10px">
             <a class="btn btn-primary" href="/user/add/"> Create User</a>
         </div>
         <div class="panel panel-default">
-            <div class="panel-heading"> User list </div>
+            <div class="panel-heading"> User list</div>
             <table class="table table-bordered">
                 <thead>
                 <tr>
@@ -22,21 +22,21 @@
                 </tr>
                 </thead>
                 <tbody>
-                    {% for obj in queryset %}
-                <tr>
-                    <td>{{ obj.name }}</td>
-                    <td>{{ obj.password }}</td>
-                    <td>{{ obj.age }}</td>
-                    <td>{{ obj.account_balance }}</td>
-                    <td>{{ obj.create_time }}</td>
-                    <td>{{ obj.get_gender_display }}</td>
-                    <td>{{ obj.department.title }}</td>
-                    <td>
-                        <a class="btn btn-primary" href="/user/{{ obj.id }}/edit/"> edit </a>
-                        <a class="btn btn-danger" href="/user/{{ obj.id }}/delete/">delete</a>
-                    </td>
-                </tr>
-                    {% endfor %}
+                {% for obj in queryset %}
+                    <tr>
+                        <td>{{ obj.name }}</td>
+                        <td>{{ obj.password }}</td>
+                        <td>{{ obj.age }}</td>
+                        <td>{{ obj.account_balance }}</td>
+                        <td>{{ obj.create_time }}</td>
+                        <td>{{ obj.get_gender_display }}</td>
+                        <td>{{ obj.department.title }}</td>
+                        <td>
+                            <a class="btn btn-primary" href="/user/{{ obj.id }}/edit/"> edit </a>
+                            <a class="btn btn-danger" href="/user/{{ obj.id }}/delete/">delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
                 </tbody>
             </table>
         </div>
@@ -57,5 +57,5 @@
             {% endif %}
         </span>
         </div>
- </div>
+    </div>
 {% endblock %}

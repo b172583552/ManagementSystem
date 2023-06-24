@@ -1,14 +1,18 @@
 from django.db import models
 
+
 class Admin(models.Model):
     username = models.CharField(max_length=32)
     password = models.CharField(max_length=64)
 
     def __str__(self):
         return self.username
+
+
 # Create your models here.
 class Department(models.Model):
     title = models.CharField(verbose_name="title", max_length=32)
+
 
 class UserInfo(models.Model):
     name = models.CharField(verbose_name="name", max_length=16)
@@ -19,12 +23,13 @@ class UserInfo(models.Model):
     create_time = models.CharField(verbose_name="create_time", max_length=16)
 
     department = models.ForeignKey(to="Department", to_field="id", on_delete=models.SET_NULL, blank=True, null=True)
-    #on_delete=models.CASCADE: delete all linked entity
+    # on_delete=models.CASCADE: delete all linked entity
     gender_choices = (
         (1, "male"),
         (2, "female"),
     )
     gender = models.SmallIntegerField(verbose_name="gender", choices=gender_choices)
+
 
 class Order(models.Model):
     order_id = models.CharField(max_length=64)
@@ -36,5 +41,3 @@ class Order(models.Model):
     status = models.SmallIntegerField(choices=status_choices, default=1)
 
     admin = models.ForeignKey(to="Admin", on_delete=models.CASCADE)
-
-

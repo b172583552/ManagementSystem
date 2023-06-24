@@ -5,7 +5,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -34,10 +33,12 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=16, verbose_name='name')),
                 ('password', models.CharField(max_length=64, verbose_name='password')),
                 ('age', models.IntegerField(verbose_name='age')),
-                ('account_balance', models.DecimalField(decimal_places=2, default=0, max_digits=10, verbose_name='account balance')),
+                ('account_balance',
+                 models.DecimalField(decimal_places=2, default=0, max_digits=10, verbose_name='account balance')),
                 ('create_time', models.CharField(max_length=16, verbose_name='create_time')),
                 ('gender', models.SmallIntegerField(choices=[(1, 'male'), (2, 'female')], verbose_name='gender')),
-                ('department', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='app01.department')),
+                ('department', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL,
+                                                 to='app01.department')),
             ],
         ),
     ]

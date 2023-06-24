@@ -10,6 +10,7 @@ from captcha.image import ImageCaptcha
 import string
 import random
 
+
 class LoginForm(forms.Form):
     username = forms.CharField(label="username")
     password = forms.CharField(label="password")
@@ -20,7 +21,6 @@ class LoginForm(forms.Form):
 
 
 def login(request):
-
     if request.method == "GET":
         return render(request, "login.html", {"error": ""})
 
@@ -39,6 +39,7 @@ def login(request):
         else:
             return HttpResponse("false")
 
+
 def logout(request):
     request.session.clear()
     return redirect("/login")
@@ -50,14 +51,9 @@ def random_char():
 
 
 def captcha(request):
-
-
     image = ImageCaptcha(width=120, height=30)
     random_word = random_char()
     data = image.generate(random_word)
 
     stream = BytesIO(r"data")
     return HttpResponse(stream.getvalue())
-
-
-

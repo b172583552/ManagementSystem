@@ -3,6 +3,7 @@ from app01 import models
 from django import forms
 from django.core.paginator import Paginator
 
+
 def department_list(request):
     queryset = models.Department.objects.all()
     page_object = Paginator(queryset, 1)
@@ -48,3 +49,20 @@ def department_edit(request, nid):
         title = request.POST.get("title")
         models.Department.objects.filter(id=nid).update(title=title)
         return redirect("/department/list")
+
+def department_upload(request):
+    from openpyxl import load_workbook
+    file = request.FILES.get("department")
+
+
+    wb = load_workbook(file)
+    sheet = wb.worksheets[0]
+
+
+    for row in sheet.iter_rows(min_row=2):
+        text = row[0].value
+        exists = models.Department.objects.filter(title=text).exists()
+        if not exists:
+            models.Department.objects.create(title=text)
+
+    return redirect("/department/list/")
