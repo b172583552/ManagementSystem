@@ -1,3 +1,3 @@
-# ManagementSystem
-A simple customer relationship management web application for companies to manage their customers and orders using Django, MySQL and Django template + Bootstrap for frontend development
-Featured user authentication, input validation, user information tracking, order status tracking
+# Order Management System
+This is a simple order relationship management web application for business owners to manage their employees and orders using Django for backend, MySQL for database and Django template + Bootstrap for frontend development. <br/>
+Featured user authentication, input validation, user information tracking, order status tracking 
