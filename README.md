@@ -1,6 +1,6 @@
 # Order Management System
-This is a order management web application for business owners to manage their employees and orders using **Django** for backend, **MySQL** for database and **Django template** + **Bootstrap** for frontend development. <br/>
-There are 4 main modules of this application: Admin, Department Management, Employee Management, Order Management. 
+This is an order management web application for business owners to manage their employees and orders using **Django** for backend, **MySQL** for database and **Django template** + **Bootstrap** for frontend development. <br/>
+There are 4 main modules of this application: Admin, Department Management, Employee Management, and Order Management. 
 ## Admin
 Users can manage system users by creating, editing and deleting entries.
 
