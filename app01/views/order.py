@@ -17,7 +17,8 @@ class OrderModelForm(forms.ModelForm):
 def order_list(request):
     form = OrderModelForm()
     queryset = models.Order.objects.all().order_by("-id")
-    page_object = Paginator(queryset, 1)
+    no_of_items = 5
+    page_object = Paginator(queryset, no_of_items)
     page_number = request.GET.get("page", "1")
     page = page_object.get_page(page_number)
     queryset = page
@@ -50,3 +51,5 @@ def order_edit(request, nid):
 def order_delete(request, nid):
     models.Order.objects.filter(id=nid).delete()
     return redirect("/order/list/")
+
+

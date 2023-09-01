@@ -6,7 +6,8 @@ from django.core.paginator import Paginator
 
 def department_list(request):
     queryset = models.Department.objects.all()
-    page_object = Paginator(queryset, 1)
+    no_of_items = 5
+    page_object = Paginator(queryset, no_of_items)
     page_number = request.GET.get("page", "1")
     page = page_object.get_page(page_number)
     queryset = page
@@ -21,9 +22,8 @@ def department_add(request):
         for index, attribute in enumerate(attributes):
             if index > 1:
                 dict[attribute] = attributes[attribute]
-        print(dict)
         return render(request, "change.html",
-                      {"name": "department", "attributes": dict})
+                      {"name": "Department", "attributes": dict})
 
     title = request.POST.get("title")
 

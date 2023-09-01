@@ -3,21 +3,21 @@
 {% block content %}
     <div class="container">
         <div style="margin-bottom: 10px">
-            <a class="btn btn-primary" href="/user/add/"> Create User</a>
+            <a class="btn btn-primary" href="/user/add/"> Create Employee</a>
         </div>
         <div class="panel panel-default">
-            <div class="panel-heading"> User list</div>
+            <div class="panel-heading"> Employee List</div>
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th>name</th>
-                    <th>password</th>
-                    <th>age</th>
-                    <th>account_balance</th>
-                    <th>create_time</th>
-                    <th>gender</th>
-                    <th>department</th>
-                    <th>operation</th>
+                    <th>Name</th>
+                    <th>Password</th>
+                    <th>Age</th>
+                    <th>Account Balance</th>
+                    <th>Create Time</th>
+                    <th>Gender</th>
+                    <th>Department</th>
+                    <th>Operation</th>
 
                 </tr>
                 </thead>
@@ -32,8 +32,8 @@
                         <td>{{ obj.get_gender_display }}</td>
                         <td>{{ obj.department.title }}</td>
                         <td>
-                            <a class="btn btn-primary" href="/user/{{ obj.id }}/edit/"> edit </a>
-                            <a class="btn btn-danger" href="/user/{{ obj.id }}/delete/">delete</a>
+                            <a class="btn btn-primary" href="/user/{{ obj.id }}/edit/"> Edit </a>
+                            <a class="btn btn-danger" href="/user/{{ obj.id }}/delete/">Delete</a>
                         </td>
                     </tr>
                 {% endfor %}

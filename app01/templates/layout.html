@@ -18,28 +18,30 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand">Management system</a>
+            <a class="navbar-brand"> Order Management System </a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a href="/admin/list"> Admin </a></li>
                 <li><a href="/department/list"> Department Management <span class="sr-only">(current)</span></a></li>
-                <li><a href="/user/list/"> User Management </a></li>
+                <li><a href="/user/list/"> Employee Management </a></li>
                 <li><a href="/order/list/"> Order Management </a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/login/">Login</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">{{ request.session.info.username }} <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Personal Information</a></li>
-                        <li><a href="#">My message</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="/logout/">Logout</a></li>
-                    </ul>
-                </li>
+                <li><a href="/logout/">Logout</a></li>
+                <li><a>{{  request.session.info.username }}</a></li>
+{#                <li class="dropdown">#}
+{#                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"#}
+{#                       aria-expanded="false">{{ request.session.info.username }} <span class="caret"></span></a>#}
+{#                    <ul class="dropdown-menu">#}
+{#                        <li><a href="#">Personal Information</a></li>#}
+{#                        <li><a href="#">My message</a></li>#}
+{#                        <li role="separator" class="divider"></li>#}
+{#                        <li><a href="/logout/">Logout</a></li>#}
+{#                    </ul>#}
+{#                </li>#}
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

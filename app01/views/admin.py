@@ -12,7 +12,8 @@ class AdminModelForm(forms.ModelForm):
 
 def admin_list(request):
     queryset = models.Admin.objects.all()
-    page_object = Paginator(queryset, 1)
+    no_of_items = 5
+    page_object = Paginator(queryset, no_of_items)
     page_number = request.GET.get("page", "1")
     page = page_object.get_page(page_number)
     queryset = page

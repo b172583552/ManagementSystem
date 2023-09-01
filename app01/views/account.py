@@ -57,3 +57,5 @@ def captcha(request):
 
     stream = BytesIO(r"data")
     return HttpResponse(stream.getvalue())
+
+

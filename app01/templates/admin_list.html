@@ -3,26 +3,28 @@
 {% block content %}
     <div class="container">
         <div style="margin-bottom: 10px" class="clearfix">
-            <a class="btn btn-primary" href="/admin/add/"> Create Admin </a>
-            <div class="col-lg-3" style="float: right">
-                <div class="input-group">
-                    <form action="">
-                        <input type="text" class="form-control" placeholder="Search by username" name="search_name">
-                        <span class="input-group-btn">
-            <button class="btn btn-default" type="submit">Go</button>
-          </span>
-                    </form>
-                </div><!-- /input-group -->
-            </div>
+            <a class="btn btn-primary" href="/admin/add/"> Create System User </a>
+{#            search panel for future development#}
+{#            <div class="col-lg-3" style="float: right">#}
+{#                <div class="input-group">#}
+{#                    <form action="">#}
+{#                        <input type="text" class="form-control" placeholder="Search by username" name="search_name">#}
+{#                        <span class="input-group-btn">#}
+{#                        <button class="btn btn-default" type="submit">Go</button>#}
+{#                        </span>#}
+{#                    </form>#}
+{#                </div><!-- /input-group -->#}
+{#            </div>#}
+
         </div>
         <div class="panel panel-default">
-            <div class="panel-heading"> Admin List</div>
+            <div class="panel-heading"> System User List</div>
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th>username</th>
-                    <th>password</th>
-                    <th>operation</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Operation</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -32,8 +34,8 @@
                         <td>{{ obj.password }}</td>
 
                         <td>
-                            <a class="btn btn-primary" href="/admin/{{ obj.id }}/edit/"> edit </a>
-                            <a class="btn btn-danger" href="/admin/{{ obj.id }}/delete/">delete</a>
+                            <a class="btn btn-primary" href="/admin/{{ obj.id }}/edit/"> Edit </a>
+                            <a class="btn btn-danger" href="/admin/{{ obj.id }}/delete/">Delete</a>
                         </td>
                     </tr>
                 {% endfor %}

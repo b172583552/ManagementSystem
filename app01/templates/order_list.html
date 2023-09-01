@@ -4,19 +4,19 @@
 {% block content %}
     <div class="container">
         <div>
-            <input id="btnAdd" type="button" value="new order" class="btn btn-primary" data-toggle="modal"
+            <input id="btnAdd" type="button" value="New Order" class="btn btn-primary" data-toggle="modal"
                    data-target="#add">
         </div>
             <div class="panel panel-default">
-            <div class="panel-heading"> Order list</div>
+            <div class="panel-heading"> Order List</div>
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th>order_id</th>
-                    <th>title</th>
-                    <th>price</th>
-                    <th>status</th>
-                    <th>admin_id</th>
+                    <th>Order_id</th>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th>Paid Status</th>
+                    <th>Created By</th>
 
                 </tr>
                 </thead>
@@ -26,12 +26,12 @@
                         <td>{{ obj.order_id }}</td>
                         <td>{{ obj.title }}</td>
                         <td>{{ obj.price }}</td>
-                        <td>{{ obj.status }}</td>
+                        <td>{{ obj.get_status_display }}</td>
                         <td>{{ obj.admin.username }}</td>
                         <td>
-                            <input id="btnEdit" type="button" value="edit" class="btn btn-primary" data-toggle="modal"
+                            <input id="btnEdit" type="button" value="Edit" class="btn btn-primary" data-toggle="modal"
                    data-target="#edit">
-                            <a class="btn btn-danger" href="/order/{{ obj.id }}/delete/">delete</a>
+                            <a class="btn btn-danger" href="/order/{{ obj.id }}/delete/">Delete</a>
                         </td>
                     </tr>
                 {% endfor %}

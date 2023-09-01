@@ -5,7 +5,7 @@ from django.utils.deprecation import MiddlewareMixin
 class AuthMiddleware(MiddlewareMixin):
 
     def process_request(self, request):
-        pass_url = ["/login/", "/captcha/"]
+        pass_url = ["/login/", "/captcha/", "/registration/"]
 
         if request.path_info in pass_url:
             return
