@@ -101,7 +101,7 @@ else:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.mysql",
-            "NAME": "database-1",
+            "NAME": "django",
             "USER": "admin",
             "PASSWORD": "qwas1234",
             "HOST": "database-1.cf7atzzbkgtu.ap-east-1.rds.amazonaws.com",
