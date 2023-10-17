@@ -1,3 +1,5 @@
+# Demo Website
+http://43.198.205.220/login
 # Order Management System
 This is an order management web application for business owners to manage their employees and orders using **Django** for backend, **MySQL** for database and **Django template** + **Bootstrap** for frontend development. <br/>
 There are 4 main modules of this application: Admin, Department Management, Employee Management, and Order Management. 
